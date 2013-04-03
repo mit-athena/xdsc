@@ -2,8 +2,8 @@ Source: debathena-xdsc
 Section: debathena/net
 Priority: extra
 Maintainer: Debathena Project <debathena@mit.edu>
-Build-Depends: @cdbs@, libxt-dev, libxaw7-dev
-Standards-Version: 3.7.2
+Build-Depends: cdbs, debhelper, dh-buildinfo, autoconf, libxt-dev, libxaw7-dev
+Standards-Version: 3.9.3
 
 Package: debathena-xdsc
 Architecture: any
