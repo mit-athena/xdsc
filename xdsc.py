@@ -16,7 +16,7 @@ from email.mime.text import MIMEText
 from optparse import OptionParser
 from xml.etree import ElementTree
 
-from gi.repository import Gtk, GObject, Pango, GLib, Gdk
+from gi.repository import Gtk, GObject, Pango, GLib, Gdk, Gio
 
 import discuss
 
@@ -189,9 +189,9 @@ class DiscussWrapper:
 
 class Xdsc:
     # A mapping of widget id to font description string
-    default_fonts_map = {'help_textview': 'Courier 8',
-                       'transaction_textview': 'Courier 8',
-                       'upper_treeview': 'Courier 8'}
+    monospace_font_widgets = ('help_textview',
+                              'transaction_textview',
+                              'upper_treeview')
 
     # A mapping of menus to the buttons they pop down from
     # for positioning.
@@ -216,8 +216,14 @@ class Xdsc:
             if isinstance(self.builder.get_object(object_id), Gtk.Widget):
                 self.builder.get_object(object_id).set_name(object_id)
         # Set some font defaults
-        for widget_id in self.default_fonts_map:
-            pangofont = Pango.FontDescription(self.default_fonts_map[widget_id])
+        for widget_id in self.monospace_font_widgets:
+            gsettings = Gio.Settings('org.gnome.desktop.interface')
+            try:
+                font_name = gsettings['monospace-font-name']
+            except KeyError:
+                font_name = 'Courier'
+            pangofont = Pango.FontDescription(font_name)
+            pangofont.set_size(9 * Pango.SCALE)
             self.builder.get_object(widget_id).override_font(pangofont)
         self.builder.connect_signals(self)
         self.main_window = self.builder.get_object('xdsc_main_window')

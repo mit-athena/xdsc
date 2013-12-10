@@ -1338,6 +1338,8 @@ permission to enter transactions in a meeting.
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
                     <property name="wrap_mode">char</property>
+                    <property name="left_margin">5</property>
+                    <property name="right_margin">2</property>
                     <property name="buffer">transaction_buffer</property>
                     <signal name="key-press-event" handler="font_size_keypress_event" swapped="no"/>
                   </object>
