@@ -139,9 +139,9 @@ class DiscussWrapper:
     def find_next_valid_transaction(self, meeting_obj, backwards=False):
         start_from = self._last_read_transaction(meeting_obj)
         if not backwards and start_from >= meeting_obj.last:
-            self.go_to_transaction(meeting_obj.last)
+            return self.get_transaction(meeting_obj, meeting_obj.last)
         if backwards and start_from <= meeting_obj.first:
-            self.go_to_transaction(meeting_obj.first)
+            return self.get_transaction(meeting_obj, meeting_obj.first)
         end = meeting_obj.first if backwards else meeting_obj.last
         increment = -1 if backwards else 1
         for t in xrange(start_from + increment,
