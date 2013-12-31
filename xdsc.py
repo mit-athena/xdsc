@@ -23,8 +23,8 @@ import discuss
 dslogger = logging.getLogger('xdsc.discuss')
 uilogger = logging.getLogger('xdsc.ui')
 
-DEFAULT_UI_FILE="/usr/share/debathena-xdsc/xdsc.ui"
-DEFAULT_ICON_FILE="/usr/share/debathena-xdsc/xdsc_icon.gif"
+DEFAULT_UI_FILE="/usr/share/xdsc/xdsc.ui"
+DEFAULT_ICON_FILE="/usr/share/xdsc/xdsc_icon.gif"
 DEFAULT_DISCUSS_EDITOR="gedit"
 DEFAULT_TIMEOUT=3
 
