@@ -77,14 +77,16 @@ class DiscussWrapper:
     def get_meeting(self, name):
        """
        Load the meeting, cache it, and return it.
-       N.B. We can't cache connections (discuss.Client) otherwise
-            hilarity ensues.
        """
        dslogger.debug('get_meeting %s', name)
        location = self.rcfile.lookup(name)
        if location not in self.meetingcache:
            mtg = discuss.Meeting(self._get_connection(location[0]),
                                  location[1])
+           # The following is a hack.  We should just be able to call
+           # load_info(), but it causes a double-free in disserve.
+           # This was fixed in commit 98121288 upstream, but not all
+           # servers have been updated.
            try:
                mtg.check_update(0)
            except discuss.client.DiscussError as e:
