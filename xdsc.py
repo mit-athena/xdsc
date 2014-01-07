@@ -106,12 +106,7 @@ class DiscussWrapper:
         self.rcfile.save()
 
     def delete_meeting(self, meeting):
-        mtg = self.rcfile.lookup(meeting)
-        if mtg is None:
-            raise ValueError(
-                '"{0}" is not in your .meetings file.'.format(meeting)
-                )
-        del self.rcfile.entries[mtg]
+        self.rcfile.delete(meeting)
         self.rcfile.save()
         self.rcfile.recache()
 
