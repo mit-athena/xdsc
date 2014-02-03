@@ -1,3 +1,10 @@
+debathena-xdsc (10.1-0debathena1) unstable; urgency=low
+
+  * Release verison 10.1 with a complete rewrite in PyGObject and using
+    python-discuss (Trac: #84)
+
+ -- Jonathan Reed <jdreed@mit.edu>  Mon, 03 Feb 2014 16:22:27 -0500
+
 debathena-xdsc (10.0.1-0debathena1) unstable; urgency=low
 
   [ Jonathan Reed ]

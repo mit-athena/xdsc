@@ -2,11 +2,12 @@ Source: debathena-xdsc
 Section: debathena/net
 Priority: extra
 Maintainer: Debathena Project <debathena@mit.edu>
-Build-Depends: debhelper (>= 7.0.50~), dh-autoreconf, autoconf, automake, libxt-dev, libxaw7-dev
+Build-Depends: debhelper (>= 7.0.50~), python (>= 2.7)
 Standards-Version: 3.9.3
+X-Debathena-No-Build: lucid squeeze
 
 Package: debathena-xdsc
-Architecture: any
-Depends: debathena-discuss (>= 9.4.30-0debathena2~), ${shlibs:Depends}, ${misc:Depends}
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}, python (>= 2.7), python-discuss (>= 1.2), gir1.2-glib-2.0, gir1.2-gtk-3.0
 Description: X interface to the Discuss conferencing and mail archiving system
  An X front-end to the Discuss system.

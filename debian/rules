@@ -1,8 +1,4 @@
 #!/usr/bin/make -f
 
 %:
-	dh $@ --with autoreconf
-
-override_dh_auto_configure:
-	automake --add-missing --foreign || true
-	dh_auto_configure
+	dh $@ --with python2
